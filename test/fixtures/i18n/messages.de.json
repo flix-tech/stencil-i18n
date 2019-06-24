@@ -1,0 +1,5 @@
+{
+    "simple-message": "deutsch",
+    "VAR.TO.REPLACE": "Irgend ein zufälliger Text mit variable ({{varName}}).",
+    "multiVars": "{{from}} zu {{to}} mit weiterem Text."
+}
