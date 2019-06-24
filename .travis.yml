@@ -5,18 +5,14 @@ node_js:
 
 stages:
   - test
-  - compile
   - name: publish
     if: branch = master
 
 jobs:
   include:
     - stage: test
-      script: npm ci && npm run lint && npm t
+      script: npm ci && npm run build && npm run lint && npm t
       name: "tests" 
-    - stage: compile
-      name: "build"
-      script: npm ci && npm run build
     - stage: publish
       name: "publish to npm"
       script: npm ci && npm run build
