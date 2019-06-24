@@ -15,6 +15,9 @@
     "translate",
     "i18n"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rimraf ./dist && npm run lint",
     "prepublishOnly": "npm ci && npm run build",
