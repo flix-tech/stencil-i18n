@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf ./dist && npm run lint",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm ci && npm run build",
     "build": "tsc && npm run rollup && npm run test",
     "watch": "tsc --watch",
     "rollup": "rollup -c rollup.config.js",

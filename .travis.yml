@@ -10,11 +10,10 @@ stages:
 jobs:
   include:
     - stage: test
-      script: npm ci && npm run lint && npm run build && npm t
+      script: npm ci && npm run lint && npm run build
       name: "tests" 
     - stage: publish
       name: "publish to npm"
-      script: npm ci && npm run build
       deploy:
         provider: npm
         email: $NPM_EMAIL
