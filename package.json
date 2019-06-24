@@ -4,6 +4,7 @@
   "description": "Static translations for stenciljs",
   "author": "FlixMobility Tech",
   "license": "MIT",
+  "repository": "https://github.com/flix-tech/stencil-i18n",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
