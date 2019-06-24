@@ -5,7 +5,7 @@ node_js:
 
 stages:
   - test
-  - name: publish
+  - publish
 
 jobs:
   include:
