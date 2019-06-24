@@ -4,12 +4,12 @@ Generating staticly translated bundles.
 
 ## Getting started
 ```bash
-npm i ???
+npm i flix-tech/stencil-i18n
 ```
 
 configure it in `stencil.config.js`
 ```javascript
-const { i18n } = require('stencil-i18n');
+const { i18n } = require('flix-tech/stencil-i18n');
 
 ...
 
