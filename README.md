@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/flix-tech/stencil-i18n.svg?branch=master)](https://travis-ci.org/flix-tech/stencil-i18n)
 # Static translations (Stencil plugin)
 
 Generating staticly translated bundles.
