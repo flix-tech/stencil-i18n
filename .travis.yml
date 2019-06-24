@@ -1,7 +1,7 @@
 
 language: node_js
 node_js:
-  - "node"
+  - "12"
 
 stages:
   - test
@@ -10,7 +10,7 @@ stages:
 jobs:
   include:
     - stage: test
-      script: npm ci && npm run lint && npm run build
+      script: npm ci && npm t
       name: "tests" 
     - stage: publish
       name: "publish to npm"

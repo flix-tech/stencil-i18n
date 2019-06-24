@@ -18,12 +18,12 @@
   "scripts": {
     "prebuild": "rimraf ./dist && npm run lint",
     "prepublishOnly": "npm ci && npm run build",
-    "build": "tsc && npm run rollup && npm run test",
+    "build": "tsc && npm run rollup",
     "watch": "tsc --watch",
     "rollup": "rollup -c rollup.config.js",
     "version": "npm run build",
     "lint": "tslint --project tsconfig.json",
-    "test": "jest",
+    "test": "npm run lint && npm run build && jest",
     "test.watch": "jest --watch",
     "postversion": "git push origin && git push origin --tags"
   },
