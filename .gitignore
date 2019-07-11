@@ -13,6 +13,7 @@ Thumbs.db
 *.launch
 .settings/
 *.sublime-workspace
+*.iml
 
 # IDE - VSCode
 .vscode/*
@@ -30,3 +31,4 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/stencil-i18n.iml
