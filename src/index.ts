@@ -6,6 +6,7 @@ import * as util from './util';
 
 export function i18n(options: d.PluginOptions = {}) {
   const locale = process.env.i18n_locale || 'en';
+  const srcPath = path.join(process.cwd(), '/', options.srcPath ?? '/src');
   const localePath = path.join(process.cwd(), options.dictionaryPath, `messages.${locale}.json`);
   const file = fs.readFileSync(localePath, 'utf8');
 
@@ -13,7 +14,7 @@ export function i18n(options: d.PluginOptions = {}) {
     name: 'i18n',
 
     transform(sourceText: string, fileName: string, context?: d.PluginCtx) {
-      if (!util.usePlugin(fileName)) {
+      if (!util.usePlugin(fileName, srcPath)) {
         return null;
       }
 
@@ -32,7 +33,7 @@ export function i18n(options: d.PluginOptions = {}) {
         return Promise.resolve(results);
       }
 
-      return new Promise<d.PluginTransformResults>(resolve => {
+      return new Promise<d.PluginTransformResults>((resolve) => {
         try {
           results.code = replace(sourceText, JSON.parse(file), options.functionName);
 
@@ -48,7 +49,7 @@ export function i18n(options: d.PluginOptions = {}) {
             relFilePath: null,
             absFilePath: null,
             messageText: e,
-            lines: []
+            lines: [],
           };
           context.diagnostics.push(diagnostic);
 
@@ -57,6 +58,6 @@ export function i18n(options: d.PluginOptions = {}) {
           resolve(results);
         }
       });
-    }
+    },
   };
 }

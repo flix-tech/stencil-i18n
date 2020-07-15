@@ -18,6 +18,11 @@ export interface PluginOptions {
    * path to files containing translations.
    */
   dictionaryPath?: string;
+
+  /**
+   * path to source files that will be translated. If not defined, path will be "src"
+   */
+  srcPath?: string;
 }
 
 export type ImporterReturnType = { file: string } | { contents: string } | Error | null;

@@ -4,7 +4,6 @@ import { i18n } from '../dist';
 import { PluginCtx } from '../dist/declarations';
 
 describe('test build', () => {
-
   afterEach(() => {
     delete process.env.i18n_locale;
   });
@@ -14,20 +13,21 @@ describe('test build', () => {
     const sourceText = fs.readFileSync(filePath, 'utf8');
 
     const plugin = i18n({
-      dictionaryPath: 'test/fixtures/i18n'
+      dictionaryPath: 'test/fixtures/i18n',
+      srcPath: 'test/fixtures',
     });
 
     const context: PluginCtx = {
       config: {
-        rootDir: __dirname
+        rootDir: __dirname,
       },
       fs: {},
-      diagnostics: []
+      diagnostics: [],
     };
 
     const results = await plugin.transform(sourceText, filePath, context);
 
-    expect(results.code).toContain('const a = \'english\';');
+    expect(results.code).toContain("const a = 'english';");
     expect(results.code).toContain('attrName: `Some random text with variable (static replace).`');
     expect(results.code).toContain('h("h2", { class: "test-heading" }, `${b} to ${to} with other text.`)');
   });
@@ -39,20 +39,21 @@ describe('test build', () => {
     process.env.i18n_locale = 'de';
 
     const plugin = i18n({
-      dictionaryPath: 'test/fixtures/i18n'
+      dictionaryPath: 'test/fixtures/i18n',
+      srcPath: 'test/fixtures',
     });
 
     const context: PluginCtx = {
       config: {
-        rootDir: __dirname
+        rootDir: __dirname,
       },
       fs: {},
-      diagnostics: []
+      diagnostics: [],
     };
 
     const results = await plugin.transform(sourceText, filePath, context);
 
-    expect(results.code).toContain('const a = \'deutsch\';');
+    expect(results.code).toContain("const a = 'deutsch';");
     expect(results.code).toContain('attrName: `Irgend ein zufälliger Text mit variable (static replace).`');
     expect(results.code).toContain('h("h2", { class: "test-heading" }, `${b} zu ${to} mit weiterem Text.`)');
   });
@@ -63,20 +64,21 @@ describe('test build', () => {
 
     const plugin = i18n({
       dictionaryPath: 'test/fixtures/i18n',
-      functionName: 'notTheSame'
+      functionName: 'notTheSame',
+      srcPath: 'test/fixtures',
     });
 
     const context: PluginCtx = {
       config: {
-        rootDir: __dirname
+        rootDir: __dirname,
       },
       fs: {},
-      diagnostics: []
+      diagnostics: [],
     };
 
     const results = await plugin.transform(sourceText, filePath, context);
 
-    expect(results.code).toContain('const a = \'english\';');
+    expect(results.code).toContain("const a = 'english';");
     expect(results.code).toContain('attrName: `Some random text with variable (static replace).`');
     expect(results.code).toContain('h("h2", { class: "test-heading" }, `${b} to ${to} with other text.`)');
   });
@@ -93,20 +95,21 @@ describe('test build', () => {
     });
 
     const plugin = i18n({
-      dictionaryPath: 'test/fixtures/i18n'
+      dictionaryPath: 'test/fixtures/i18n',
+      srcPath: 'test/fixtures',
     });
 
     const context: PluginCtx = {
       config: {
-        rootDir: __dirname
+        rootDir: __dirname,
       },
       fs: {},
-      diagnostics: []
+      diagnostics: [],
     };
 
     const results = await plugin.transform(sourceText, filePath, context);
 
-    expect(results.code).toContain('const a = \'simple-message\';');
+    expect(results.code).toContain("const a = 'simple-message';");
     expect(results.code).toContain('attrName: `VAR.TO.REPLACE`');
     expect(results.code).toContain('h("h2", { class: "test-heading" }, `${b} to {{to}} with other text.`)');
 
@@ -126,15 +129,16 @@ describe('test build', () => {
     });
 
     const plugin = i18n({
-      dictionaryPath: 'test/fixtures/i18n'
+      dictionaryPath: 'test/fixtures/i18n',
+      srcPath: 'test/fixtures',
     });
 
     const context: PluginCtx = {
       config: {
-        rootDir: __dirname
+        rootDir: __dirname,
       },
       fs: {},
-      diagnostics: []
+      diagnostics: [],
     };
 
     const results = await plugin.transform(sourceText, filePath, context);

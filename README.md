@@ -1,14 +1,17 @@
 [![Build Status](https://travis-ci.org/flix-tech/stencil-i18n.svg?branch=master)](https://travis-ci.org/flix-tech/stencil-i18n)
+
 # Static translations (Stencil plugin)
 
 Generating staticly translated bundles.
 
 ## Getting started
+
 ```bash
 npm i @flix-tech/stencil-i18n
 ```
 
 configure it in `stencil.config.js`
+
 ```javascript
 const { i18n } = require('@flix-tech/stencil-i18n');
 
@@ -18,7 +21,8 @@ plugins: [
     ...,
     i18n({
       functionName: 'i18n', // default value is i18n
-      dictionaryPath: 'src/i18n'
+      dictionaryPath: 'src/i18n',
+      srcPath: 'src' // default value is src
     })
   ]
 ```
@@ -41,6 +45,7 @@ Configure the build task in your `package.json` similar to the following.
 Be sure to put the `i18n_locale` environment variable containing the same as `messages.${locale}.json` `locale`.
 Use the function you defined in `functionName` to translate.
 Import the dummy function defined before.
+
 ```javascript
 const param3 = 'bye';
 ...
@@ -61,14 +66,13 @@ import { Component, Inject, LOCALE_ID } from '@angular/core';
 @Component({
   selector: 'app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   constructor(@Inject(LOCALE_ID) locale: string) {
-    import(`<YOUR_COMPONENT_NAME>/dist/${locale}/loader`).then(webcomponent => {
+    import(`<YOUR_COMPONENT_NAME>/dist/${locale}/loader`).then((webcomponent) => {
       webcomponent.defineCustomElements(window);
     });
   }
 }
-
 ```

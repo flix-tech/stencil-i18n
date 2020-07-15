@@ -1,17 +1,15 @@
-import * as d from './declarations';
 import * as fs from 'fs';
+import * as d from './declarations';
 
-
-export function usePlugin(fileName: string) {
+export function usePlugin(fileName: string, srcPath: string) {
   if (typeof fileName === 'string') {
-    return /(\.jsx|\.js)$/i.test(fileName);
+    return fileName.startsWith(srcPath) && /(\.tsx|\.jsx|\.ts|\.js)$/i.test(fileName);
   }
   return true;
 }
 
-
 export function getContext(context: d.PluginCtx) {
-  context = context || {} as any;
+  context = context || ({} as any);
 
   if (!Array.isArray(context.diagnostics)) {
     context.diagnostics = [];

@@ -1,33 +1,27 @@
+import rollupResolve from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
-import rollupResolve from 'rollup-plugin-node-resolve';
-
 
 export default {
   input: 'dist/index.js',
 
   plugins: [
     rollupResolve({
-      preferBuiltins: true
-    })
+      preferBuiltins: true,
+    }),
   ],
 
-  external: [
-    'fs',
-    'path'
-  ],
+  external: ['fs', 'path'],
 
   output: [
     {
       format: 'cjs',
-      file: pkg.main
+      file: pkg.main,
     },
     {
       format: 'esm',
-      file: pkg.module
-    }
-  ]
+      file: pkg.module,
+    },
+  ],
 };
 
-(function(exports) {
-
-})({})
+(function (exports) {})({});
